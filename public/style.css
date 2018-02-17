@@ -1,0 +1,36 @@
+#app {
+    display: grid;
+    grid-template-columns: 85% 15%;
+}
+#chat-rooms {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+}
+.chat-box {
+    height: 500px;
+    margin-bottom: 5px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    overflow-y: scroll;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.chat-content {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+form.chat-input {
+    display: grid;
+    grid-template-columns: 90% 10%;
+    grid-gap: 5px;
+}
+form.chat-input > input[type=text] {
+    height: 20px;
+    padding: 5px;
+}
+form.chat-input > input[type=submit] {
+    height: 30px;
+    background-color: aqua;
+}

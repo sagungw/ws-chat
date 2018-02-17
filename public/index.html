@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title></title>
+    <link rel='stylesheet' href='/style.css'/>
+</head>
+<body>
+    <div id='app' >
+        <div id='content'>
+            <div>
+                Welcome {{username}}!
+            </div>
+            <div id='chat-rooms'>
+                <div class='chat-container'>
+                    <h3>Global Room</h3>
+                    <div id='global-chat' class='chat-box'>
+                        <div class='chat-content' v-for='msg in messages'>
+                            {{msg.username}} : {{msg.content}}
+                        </div>
+                    </div>
+                    <form class='chat-input' v-on:submit.prevent='sendGlobalMessage' method='POST' action='javascript:void()'>
+                        <input type='text' placeholder='say something . . .' name='email' v-model='newMessage'/>
+                        <input type='submit' class='send-chat' name='submit' value='Send'/>
+                    </form>
+                </div>
+                <div class='chat-container' v-for='session in privateChatSessions'>
+                    <h3>{{session.to}}</h3>
+                    <div id='global-chat' class='chat-box'>
+                        <div class='chat-content' v-for='msg in session.messages'>
+                            {{msg.username}} : {{msg.content}}
+                        </div>
+                    </div>
+                    <form class='chat-input' v-on:submit.prevent='sendMessage(session.to)' method='POST' action='javascript:void()'>
+                        <input type='text' placeholder='say something . . .' name='email' v-model='session.newMessage'/>
+                        <input type='submit' class='send-chat' name='submit' value='Send'/>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id='user-list'>
+            <h3>Logged In Users</h3>
+            <ul v-for='user in loggedInUsers'>
+                <li><a href='javascript:void()' v-on:click.prevent='startPrivate(user.username)'>{{user.username}}</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/vue'></script>
+    <script src='/chance.min.js'></script>
+    <script src='/app.js'></script>
+</body>
+</html>
