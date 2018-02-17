@@ -1,0 +1,12 @@
+{
+	"ImportPath": "github.com/sagungw/ws-chat",
+	"GoVersion": "go1.9",
+	"GodepVersion": "v80",
+	"Deps": [
+		{
+			"ImportPath": "github.com/gorilla/websocket",
+			"Comment": "v1.2.0-28-g4ac9097",
+			"Rev": "4ac909741dfa57448bfadfdbca0cf7eeaa68f0e2"
+		}
+	]
+}
