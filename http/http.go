@@ -3,6 +3,7 @@ package http
 import (
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/sagungw/ws-chat/ws"
 )
@@ -16,8 +17,8 @@ func InitHTTP() error {
 	webapp := http.FileServer(http.Dir("./public"))
 	http.Handle("/", webapp)
 
-	log.Println("Listening HTTP requests on port 9876")
-	err := http.ListenAndServe(":9876", nil)
+	log.Println("Listening HTTP requests on port " + os.Getenv("PORT"))
+	err := http.ListenAndServe(":"+os.Getenv("PORT"), nil)
 	return err
 }
 
